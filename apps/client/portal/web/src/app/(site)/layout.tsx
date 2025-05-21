@@ -22,8 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-
+      <body className="page">
         <LayoutHeader />
         <LayoutMain>{children}</LayoutMain>
         <LayoutFooter />

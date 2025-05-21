@@ -4,10 +4,8 @@ import LayoutFooter from '@/components/layout/footer';
 import LayoutHeader from '@/components/layout/header';
 import LayoutHeaderSticky from '@/components/layout/header-sticky';
 import LayoutMain from '@/components/layout/main';
-import LayoutTop from '@/components/layout/top';
 import { createBrikz } from '@rollers/libs-client-brikz';
 import '../global.css';
-import LayoutMenuMobile from '@/components/layout/menu-mobile';
 
 export const metadata = {
   title: 'Welcome to apps-client-portal-web',
