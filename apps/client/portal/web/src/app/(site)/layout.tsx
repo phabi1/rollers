@@ -1,11 +1,10 @@
 import { BRIKZ_COMPONENTS } from '@/brikz';
-import { createBrikz } from '@rollers/libs-client-brikz';
-import '../global.css';
-import LayoutTop from '@/components/layout/top';
+import LayoutBottom from '@/components/layout/bottom';
+import LayoutFooter from '@/components/layout/footer';
 import LayoutHeader from '@/components/layout/header';
 import LayoutMain from '@/components/layout/main';
-import LayoutFooter from '@/components/layout/footer';
-import LayoutBottom from '@/components/layout/bottom';
+import { createBrikz } from '@rollers/libs-client-brikz';
+import '../global.css';
 
 export const metadata = {
   title: 'Welcome to apps-client-portal-web',
@@ -24,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+
         <LayoutHeader />
         <LayoutMain>{children}</LayoutMain>
         <LayoutFooter />
