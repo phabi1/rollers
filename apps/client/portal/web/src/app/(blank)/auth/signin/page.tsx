@@ -1,3 +1,4 @@
+import AuthSocialLogin from '@/components/auth/social-login';
 import Paper from '@/components/ui/paper';
 import Link from 'next/link';
 
@@ -48,6 +49,10 @@ export default async function AuthSigninPage() {
             </button>
           </div>
         </form>
+        <div className="mt-4">
+          <p className="text-center">Or</p>
+          <AuthSocialLogin />
+        </div>
       </Paper>
       <div className="mt-4 text-center">
         <p>
