@@ -1,0 +1,46 @@
+{
+  "name": "@rollers/apps-server-brikz",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "apps-server-brikz",
+    "targets": {
+      "build": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "webpack-cli build",
+          "args": [
+            "node-env=production"
+          ]
+        },
+        "configurations": {
+          "development": {
+            "args": [
+              "node-env=development"
+            ]
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "apps-server-brikz:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "apps-server-brikz:build:development"
+          },
+          "production": {
+            "buildTarget": "apps-server-brikz:build:production"
+          }
+        }
+      }
+    }
+  }
+}

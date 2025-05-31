@@ -14,6 +14,51 @@
     },
     {
       "path": "./libs/client/brikz"
+    },
+    {
+      "path": "./apps/api/gateway-e2e"
+    },
+    {
+      "path": "./apps/api/gateway"
+    },
+    {
+      "path": "./apps/server/account-e2e"
+    },
+    {
+      "path": "./apps/server/account"
+    },
+    {
+      "path": "./apps/server/brikz-e2e"
+    },
+    {
+      "path": "./apps/server/brikz"
+    },
+    {
+      "path": "./apps/server/auth-e2e"
+    },
+    {
+      "path": "./apps/server/auth"
+    },
+    {
+      "path": "./libs/api/gateway/auth"
+    },
+    {
+      "path": "./libs/client/dashboard"
+    },
+    {
+      "path": "./apps/client/admin/web-e2e"
+    },
+    {
+      "path": "./apps/client/admin/web"
+    },
+    {
+      "path": "./apps/client/admin/web-e2e"
+    },
+    {
+      "path": "./libs/client/datagrid"
+    },
+    {
+      "path": "./libs/client/admin/page"
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "name": "@rollers/apps-server-account-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "apps-server-account-e2e",
+    "implicitDependencies": [
+      "apps-server-account"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/server/account-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "apps-server-account:build",
+          "apps-server-account:serve"
+        ]
+      }
+    }
+  }
+}

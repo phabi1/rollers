@@ -1,0 +1,27 @@
+{
+  "name": "@rollers/apps-server-brikz-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "apps-server-brikz-e2e",
+    "implicitDependencies": [
+      "apps-server-brikz"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/server/brikz-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "apps-server-brikz:build",
+          "apps-server-brikz:serve"
+        ]
+      }
+    }
+  }
+}
