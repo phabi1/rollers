@@ -8,9 +8,26 @@ import {
 } from '@rollers/libs-client-datagrid';
 import { Action, Page } from '@rollers/libs-client-admin-page';
 import { useRouter } from 'next/navigation';
+import { gql, useQuery } from '@apollo/client';
+
+const GET_EVENTS_GQL = gql`
+  query GetEvents {
+    events {
+      nodes {
+        id
+        title
+      }
+      total
+    }
+  }
+`;
 
 export default function EventListPage() {
   const router = useRouter();
+
+  const events = useQuery(GET_EVENTS_GQL);
+  console.log('Events:', events);
+
   const { items, loading, error, empty } = useEventsList();
 
   const pageActions: Action[] = [
@@ -35,7 +52,7 @@ export default function EventListPage() {
       name: 'title',
       header: 'Title',
       type: 'text',
-      feature: true
+      feature: true,
     },
     {
       name: 'description',
@@ -59,18 +76,13 @@ export default function EventListPage() {
       name: 'edit',
       label: 'Edit',
       handle: (item: EventItem) => {
-        console.log('Edit action for item:', item);
-        // Navigate to edit page or handle edit action
         router.push(`/events/${item.id}/edit`);
       },
     },
     {
       name: 'delete',
       label: 'Delete',
-      handle: (item: EventItem) => {
-        console.log('Delete action for item:', item);
-        // Handle delete action
-      },
+      handle: (item: EventItem) => {},
     },
   ];
 
@@ -92,11 +104,17 @@ export default function EventListPage() {
       headingSubtitle="Manage your events"
       actions={pageActions}
     >
-      <Datagrid
-        source={items}
-        columns={columns}
-        actions={itemActions}
-      ></Datagrid>
+      <Page.Content>
+        <Datagrid
+          source={items}
+          columns={columns}
+          actions={itemActions}
+          itemClick={(item: EventItem) => {
+            console.log('Item clicked:', item);
+            router.push(`/events/${item.id}`);
+          }}
+        ></Datagrid>
+      </Page.Content>
     </Page>
   );
 }

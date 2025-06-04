@@ -4,6 +4,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../../libs/server/mongoose/cqrs"
+    },
+    {
       "path": "./tsconfig.app.json"
     }
   ]

@@ -11,32 +11,21 @@ export function useEventsList() {
 
   useEffect(() => {
     setLoading(true);
-    // Simulate an API call
-    setTimeout(() => {
-      try {
-        // Replace with actual API call
-        setItems([
-          {
-            id: 1,
-            title: 'Event 1',
-            description: 'Description for Event 1',
-            startAt: new Date('2023-10-01T10:00:00'),
-            endAt: new Date('2023-10-01T12:00:00'),
-          },
-          {
-            id: 2,
-            title: 'Event 2',
-            description: 'Description for Event 2',
-            startAt: new Date('2023-10-02T11:00:00'),
-            endAt: new Date('2023-10-02T13:00:00'),
-          },
-        ]);
+    fetch(`/api/events`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setItems(data.nodes);
         setLoading(false);
-      } catch (err) {
+      })
+      .catch((error) => {
         setError('Failed to load events');
         setLoading(false);
-      }
-    }, 1000);
+      });
   }, []);
 
   return { items, loading, error, empty };

@@ -1,10 +1,20 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LibsApiGatewayAuthModule } from '@rollers/libs-api-gateway-auth';
+import { GraphqlModule } from './infra/graphql/graphql.module';
+import { config as appConfig } from '../config/app.config';
 
 @Module({
-  imports: [LibsApiGatewayAuthModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [
+        appConfig
+      ],
+    }),
+    GraphqlModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

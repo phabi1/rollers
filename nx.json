@@ -20,7 +20,11 @@
           "watchDepsName": "watch-deps"
         }
       },
-      "exclude": ["libs/api/gateway/auth/*"]
+      "exclude": [
+        "libs/api/gateway/auth/*",
+        "libs/server/mongoose/cqrs/*",
+        "libs/server/graphql/dataloader/*"
+      ]
     },
     {
       "plugin": "@nx/next/plugin",
@@ -62,7 +66,11 @@
     },
     {
       "plugin": "@nx/js/typescript",
-      "include": ["libs/api/gateway/auth/*"],
+      "include": [
+        "libs/api/gateway/auth/*",
+        "libs/server/mongoose/cqrs/*",
+        "libs/server/graphql/dataloader/*"
+      ],
       "options": {
         "typecheck": {
           "targetName": "typecheck"

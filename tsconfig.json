@@ -10,9 +10,6 @@
       "path": "./apps/client/portal/web"
     },
     {
-      "path": "./apps/client/portal/web-e2e"
-    },
-    {
       "path": "./libs/client/brikz"
     },
     {
@@ -34,12 +31,6 @@
       "path": "./apps/server/brikz"
     },
     {
-      "path": "./apps/server/auth-e2e"
-    },
-    {
-      "path": "./apps/server/auth"
-    },
-    {
       "path": "./libs/api/gateway/auth"
     },
     {
@@ -52,13 +43,22 @@
       "path": "./apps/client/admin/web"
     },
     {
-      "path": "./apps/client/admin/web-e2e"
-    },
-    {
       "path": "./libs/client/datagrid"
     },
     {
       "path": "./libs/client/admin/page"
+    },
+    {
+      "path": "./libs/server/mongoose/cqrs"
+    },
+    {
+      "path": "./apps/server/events-e2e"
+    },
+    {
+      "path": "./apps/server/events"
+    },
+    {
+      "path": "./libs/server/graphql/dataloader"
     }
   ]
 }

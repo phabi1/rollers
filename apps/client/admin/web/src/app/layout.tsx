@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from '@/theme';
 import './global.css';
 import Drawer from '@mui/material/Drawer';
+import { ApolloProvider } from './providers/apollo';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -26,10 +27,12 @@ export default function RootLayout({
     <html lang="en" className={roboto.variable}>
       <body className="w-full h-full">
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Drawer>SIDEBAR</Drawer>
-            {children}
-          </ThemeProvider>
+          <ApolloProvider>
+            <ThemeProvider theme={theme}>
+              <Drawer>SIDEBAR</Drawer>
+              {children}
+            </ThemeProvider>
+          </ApolloProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

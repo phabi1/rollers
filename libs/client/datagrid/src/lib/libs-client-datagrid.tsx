@@ -8,20 +8,23 @@ export interface LibsClientDatagridProps<T> {
   columns: DatagridColumn[];
   actions?: DatagridAction<T>[];
   source?: T[];
+  itemClick?: (item: T) => void;
 }
 
 export function Datagrid<T>({
   columns,
   actions,
   source = [],
+  itemClick,
 }: LibsClientDatagridProps<T>) {
   return (
     <>
-    <DatagridTable
-      source={source}
-      columns={columns}
-      actions={actions}
-    ></DatagridTable>
+      <DatagridTable
+        source={source}
+        columns={columns}
+        actions={actions}
+        itemClick={itemClick}
+      ></DatagridTable>
     </>
   );
 }
