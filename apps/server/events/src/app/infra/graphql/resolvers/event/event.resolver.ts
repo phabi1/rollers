@@ -9,6 +9,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { InjectLoader } from '@rollers/libs-server-graphql-dataloader';
+import { PaginationArgs } from '@rollers/libs-server-graphql-pagination';
 import DataLoader from 'dataloader';
 import {
   AddParticipantToEventCommand,
@@ -17,13 +18,14 @@ import {
   DeleteEventCommand,
   GetEventQuery,
   GetEventsQuery,
+  RemoveParticipantFromEventCommand,
   UpdateEventCommand,
 } from '../../../../domain/event';
-import { RemoveParticipantFromEventCommand } from '../../../../domain/event/commands/remove-participant-from-event/remove-participant-from-event.command';
-import { PaginationArgs } from '../../args/pagination.args';
 import { Event } from '../../types/event.type';
 import { PaginatedEvent } from '../../types/paginated-event.type';
 import { Participant } from '../../types/participant.type';
+import { CreateEventInput } from '../../inputs/create-event.input';
+import { UpdateEventInput } from '../../inputs/update-event.input';
 
 @Resolver(() => Event)
 export class EventResolver {
@@ -53,14 +55,17 @@ export class EventResolver {
   @Mutation(() => Event, {
     description: 'Create a new event',
   })
-  createEvent() {
+  createEvent(@Args('input') input: CreateEventInput) {
     return this.commandBus.execute(
       new CreateEventCommand(
-        'New Event',
-        'This is a new event description',
-        new Date(),
-        new Date(),
-        false
+        input.title,
+        input.description,
+        input.startAt,
+        input.endAt,
+        input.enableRegistration,
+        input.registrationStartAt,
+        input.registrationEndAt,
+        input.registrationLimit
       )
     );
   }
@@ -68,8 +73,23 @@ export class EventResolver {
   @Mutation(() => Event, {
     description: 'Update an existing event by ID',
   })
-  updateEvent(@Args('id', { type: () => ID }) id: string) {
-    return this.commandBus.execute(new UpdateEventCommand(id));
+  updateEvent(
+    @Args('id', { type: () => ID }) id: string,
+    @Args('input') input: UpdateEventInput
+  ) {
+    return this.commandBus.execute(
+      new UpdateEventCommand(
+        id,
+        input.title,
+        input.description,
+        input.startAt,
+        input.endAt,
+        input.enableRegistration,
+        input.registrationStartAt,
+        input.registrationEndAt,
+        input.registrationLimit
+      )
+    );
   }
 
   @Mutation(() => Event, {

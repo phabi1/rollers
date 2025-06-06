@@ -2,8 +2,8 @@ export class Content {
   private definition: any;
 
   getSources(): string[] {
-    const components: string[] = [];
-    return components;
+    const sources: string[] = [];
+    return sources;
   }
 
   fromJson(json: string): Content {

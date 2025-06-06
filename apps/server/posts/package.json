@@ -1,0 +1,46 @@
+{
+  "name": "@rollers/apps-server-posts",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "apps-server-posts",
+    "targets": {
+      "build": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "webpack-cli build",
+          "args": [
+            "node-env=production"
+          ]
+        },
+        "configurations": {
+          "development": {
+            "args": [
+              "node-env=development"
+            ]
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "apps-server-posts:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "apps-server-posts:build:development"
+          },
+          "production": {
+            "buildTarget": "apps-server-posts:build:production"
+          }
+        }
+      }
+    }
+  }
+}

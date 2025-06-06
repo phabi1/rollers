@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ContentDefinitionService } from './services/content-definition.service';
+import { GeneratorService } from './services/generator/generator.service';
+import { ValidatorService } from './services/validator/validator.service';
 
 @Module({
-  providers: [ContentDefinitionService],
-  exports: [ContentDefinitionService],
+  providers: [GeneratorService, ValidatorService],
+  exports: [ValidatorService, GeneratorService],
 })
 export class ContentDefinitionModule {}

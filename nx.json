@@ -23,7 +23,10 @@
       "exclude": [
         "libs/api/gateway/auth/*",
         "libs/server/mongoose/cqrs/*",
-        "libs/server/graphql/dataloader/*"
+        "libs/server/graphql/dataloader/*",
+        "libs/server/graphql/auth/gateway/*",
+        "libs/server/graphql/auth/subgraph/*",
+        "libs/server/graphql/pagination/*"
       ]
     },
     {
@@ -69,7 +72,10 @@
       "include": [
         "libs/api/gateway/auth/*",
         "libs/server/mongoose/cqrs/*",
-        "libs/server/graphql/dataloader/*"
+        "libs/server/graphql/dataloader/*",
+        "libs/server/graphql/auth/gateway/*",
+        "libs/server/graphql/auth/subgraph/*",
+        "libs/server/graphql/pagination/*"
       ],
       "options": {
         "typecheck": {

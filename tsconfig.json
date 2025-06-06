@@ -59,6 +59,21 @@
     },
     {
       "path": "./libs/server/graphql/dataloader"
+    },
+    {
+      "path": "./apps/server/posts-e2e"
+    },
+    {
+      "path": "./apps/server/posts"
+    },
+    {
+      "path": "./libs/server/graphql/auth/gateway"
+    },
+    {
+      "path": "./libs/server/graphql/auth/subgraph"
+    },
+    {
+      "path": "./libs/server/graphql/pagination"
     }
   ]
 }

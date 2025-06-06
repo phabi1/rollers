@@ -45,7 +45,8 @@
     "apps/client/admin/*",
     "libs/client/admin/*",
     "libs/server/mongoose/*",
-    "libs/server/graphql/*"
+    "libs/server/graphql/*",
+    "libs/server/graphql/auth/*"
   ],
   "dependencies": {
     "@apollo/client": "^3.13.8",
@@ -84,6 +85,7 @@
     "react-grid-layout": "^1.5.1",
     "react-hook-form": "^7.56.4",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "slugify": "^1.6.6"
   }
 }
