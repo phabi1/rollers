@@ -1,15 +1,19 @@
 import AuthSocialLogin from '@/components/auth/social-login';
 import Paper from '@/components/ui/paper';
 import Link from 'next/link';
+import { sign } from './actions';
+import { useTranslations } from 'use-intl';
 
 export default async function AuthSigninPage() {
+  const t = await useTranslations('signin');
+
   return (
     <>
       <div className="mb-4 text-center">
-        <h1 className="text-2xl">Signin</h1>
+        <h1 className="text-2xl">{t('title')}</h1>
       </div>
       <Paper>
-        <form>
+        <form action={sign}>
           <div>
             <label htmlFor="login">Login</label>
             <input

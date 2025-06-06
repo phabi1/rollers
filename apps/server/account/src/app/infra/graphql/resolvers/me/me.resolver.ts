@@ -1,5 +1,5 @@
 import { Query, Resolver } from '@nestjs/graphql';
-import { Me } from '../types/me.type';
+import { Me } from '../../types/me.type';
 
 @Resolver()
 export class MeResolver {

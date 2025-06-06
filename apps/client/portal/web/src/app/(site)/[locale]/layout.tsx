@@ -2,9 +2,10 @@ import { BRIKZ_COMPONENTS } from '@/brikz';
 import LayoutBottom from '@/components/layout/bottom';
 import LayoutFooter from '@/components/layout/footer';
 import LayoutHeader from '@/components/layout/header';
-import LayoutHeaderSticky from '@/components/layout/header-sticky';
 import LayoutMain from '@/components/layout/main';
 import { createBrikz } from '@rollers/libs-client-brikz';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import '../global.css';
 
 export const metadata = {
@@ -16,20 +17,22 @@ createBrikz({
   components: BRIKZ_COMPONENTS,
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en">
-      <body className="frontpage">
-          <LayoutHeaderSticky top={400}>
-            <LayoutHeader />
-          </LayoutHeaderSticky>
+    <html lang={locale}>
+      <body className="page">
+        <NextIntlClientProvider>
+          <LayoutHeader />
           <LayoutMain>{children}</LayoutMain>
           <LayoutFooter />
           <LayoutBottom />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
